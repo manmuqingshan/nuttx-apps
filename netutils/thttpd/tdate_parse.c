@@ -348,7 +348,7 @@ time_t tdate_parse(char *str)
 #endif /* Day of week not yet supported by NuttX */
   else
     {
-      return (time_t) - 1;
+      return -1;
     }
 
   if (tm.tm_year > 1900)

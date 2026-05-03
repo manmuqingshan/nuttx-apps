@@ -2305,11 +2305,11 @@ static int ftpd_listbuffer(FAR struct ftpd_session_s *session,
 
       /* time */
 
-      memcpy(&tm, localtime((FAR const time_t *)&st->st_mtime), sizeof(tm));
+      memcpy(&tm, localtime(&st->st_mtime), sizeof(tm));
       offset += snprintf(&buffer[offset], buflen - offset, " %s %2u",
                          g_monthtab[tm.tm_mon], tm.tm_mday);
       now = time(0);
-      if ((now - st->st_mtime) > (time_t)(60 * 60 * 24 * 180))
+      if (now - st->st_mtime > 60 * 60 * 24 * 180)
         {
           offset += snprintf(&buffer[offset], buflen - offset, " %5u",
                              tm.tm_year + 1900);

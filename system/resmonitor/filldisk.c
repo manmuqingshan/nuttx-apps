@@ -304,7 +304,7 @@ int main(int argc, FAR char *argv[])
             mode   = 1;
             break;
           case 'i':
-            interval = (time_t)bytes(optarg);
+            interval = bytes(optarg);
             break;
           case 'b':
             bufsize = bytes(optarg);

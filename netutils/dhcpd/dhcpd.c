@@ -661,7 +661,7 @@ static inline bool dhcpd_parseoptions(void)
             if (optlen >= 6 && optlen < remaining)
               {
                 memcpy(&tmp, &ptr[DHCPD_OPTION_DATA], 4);
-                g_state.ds_optleasetime = (time_t)ntohl(tmp);
+                g_state.ds_optleasetime = ntohl(tmp);
               }
             break;
 
