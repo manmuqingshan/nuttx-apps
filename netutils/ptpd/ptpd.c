@@ -184,13 +184,8 @@ static void timespec_to_ptp_format(FAR const struct timespec *ts,
    * both fields big-endian.
    */
 
-#ifdef CONFIG_SYSTEM_TIME64
   timestamp[0] = (uint8_t)(ts->tv_sec >> 40);
   timestamp[1] = (uint8_t)(ts->tv_sec >> 32);
-#else
-  timestamp[0] = 0;
-  timestamp[1] = 0;
-#endif
   timestamp[2] = (uint8_t)(ts->tv_sec >> 24);
   timestamp[3] = (uint8_t)(ts->tv_sec >> 16);
   timestamp[4] = (uint8_t)(ts->tv_sec >>  8);
@@ -320,7 +315,6 @@ static int64_t timespec_delta_ns(FAR const struct timespec *ts1,
 
   delta_s = ts1->tv_sec - ts2->tv_sec;
 
-#ifdef CONFIG_SYSTEM_TIME64
   /* Conversion to nanoseconds could overflow if the system time is 64-bit */
 
   if (delta_s >= INT64_MAX / NSEC_PER_SEC)
@@ -331,7 +325,6 @@ static int64_t timespec_delta_ns(FAR const struct timespec *ts1,
     {
       return INT64_MIN;
     }
-#endif
 
   return delta_s * NSEC_PER_SEC + (ts1->tv_nsec - ts2->tv_nsec);
 }

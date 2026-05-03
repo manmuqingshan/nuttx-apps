@@ -204,11 +204,7 @@
  * signal indicating a change in network status.
  */
 
-#ifdef CONFIG_SYSTEM_TIME64
-#  define LONG_TIME_SEC    (60*60)   /* One hour in seconds */
-#else
-#  define LONG_TIME_SEC    (5*60)    /* Five minutes in seconds */
-#endif
+#define LONG_TIME_SEC      (60*60)   /* One hour in seconds */
 
 #define SHORT_TIME_SEC     (2)       /* 2 seconds */
 
