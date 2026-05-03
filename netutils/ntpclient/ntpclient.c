@@ -63,10 +63,6 @@
 
 /* Configuration ************************************************************/
 
-#ifndef CONFIG_HAVE_LONG_LONG
-#  error "64-bit integer support required for NTP client"
-#endif
-
 #if defined(CONFIG_LIBC_NETDB) && !defined(CONFIG_NETUTILS_NTPCLIENT_SERVER)
 #  error "CONFIG_NETUTILS_NTPCLIENT_SERVER must be provided"
 #endif

@@ -341,7 +341,6 @@ static FAR void *nxscope_samples_thr(FAR void *arg)
 
       nxscope_put_b16(envp->nxs, 13, ftob16(-1.0f));
 
-#ifdef CONFIG_HAVE_LONG_LONG
       /* Channel 14 */
 
       nxscope_put_ub32(envp->nxs, 14, dtob32(1.0));
@@ -349,7 +348,6 @@ static FAR void *nxscope_samples_thr(FAR void *arg)
       /* Channel 15 */
 
       nxscope_put_b32(envp->nxs, 15, dtob32(-1.0));
-#endif
 
       /* Channel 16 */
 
@@ -705,7 +703,6 @@ int main(int argc, FAR char *argv[])
   u.s.cri   = 0;
   nxscope_chan_init(&nxs, 13, "chan13", u.u8, 1, 0);
 
-#ifdef CONFIG_HAVE_LONG_LONG
   u.s.dtype = NXSCOPE_TYPE_UB32;
   u.s._res  = 0;
   u.s.cri   = 0;
@@ -715,7 +712,6 @@ int main(int argc, FAR char *argv[])
   u.s._res  = 0;
   u.s.cri   = 0;
   nxscope_chan_init(&nxs, 15, "chan15", u.u8, 1, 0);
-#endif
 
   /* Vector data channel */
 

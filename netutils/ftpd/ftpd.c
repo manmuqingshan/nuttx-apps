@@ -3735,11 +3735,7 @@ static int ftpd_command_appe(FAR struct ftpd_session_s *session)
 
 static int ftpd_command_rest(FAR struct ftpd_session_s *session)
 {
-#ifdef CONFIG_HAVE_LONG_LONG
   session->restartpos = (off_t)atoll(session->param);
-#else
-  session->restartpos = (off_t)atoi(session->param);
-#endif
   session->flags |= FTPD_SESSIONFLAG_RESTARTPOS;
 
   return ftpd_response(session->cmd.sd, session->txtimeout,
